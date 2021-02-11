@@ -1,0 +1,24 @@
+---
+
+- stat:
+    path: "{{ root }}/.sdkman/bin/sdkman-init.sh"
+  register: _sdkman_stat
+
+- name: fetch sdkman
+  block:
+    - get_url:
+        url: "https://get.sdkman.io"
+        dest: "{{ tempdir.path }}/install-sdkman.sh"
+        mode: "0755"
+    - command: "{{ tempdir.path }}/install-sdkman.sh"
+  when: not _sdkman_stat.stat.exists
+
+- name: sdkman init
+  copy:
+    dest: "{{ root }}/.bash.d/profile.d/sdkman-init"
+    content: |
+      #!/bin/bash
+      . {{ root }}/.sdkman/bin/sdkman-init.sh
+    mode: "0755"
+
+...

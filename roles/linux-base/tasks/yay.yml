@@ -1,0 +1,23 @@
+---
+
+- stat:
+    path: /usr/bin/yay
+  register: _yay
+
+- name: yay -- install from source
+  block:
+    - git:
+        repo: https://aur.archlinux.org/yay.git
+        dest: "{{ tempdir.path }}/yay-git-repo"
+
+    - command: makepkg -s --noconfirm
+      args:
+        chdir: "{{ tempdir.path }}/yay-git-repo"
+
+    - shell: "pacman -U --needed --noconfirm yay*.pkg*"
+      become: true
+      args:
+        chdir: "{{ tempdir.path }}/yay-git-repo"
+  when: not _yay.stat.exists
+
+...

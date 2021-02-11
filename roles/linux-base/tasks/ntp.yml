@@ -1,0 +1,15 @@
+---
+
+- name: ntp -- install package
+  become: true
+  package:
+    name: ntp
+
+- name: ntp -- enable/start
+  become: true
+  systemd:
+    name: ntpd
+    state: started
+    enabled: true
+
+...

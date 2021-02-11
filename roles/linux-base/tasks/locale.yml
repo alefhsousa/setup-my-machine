@@ -1,0 +1,20 @@
+---
+
+- name: locale -- generate locale
+  become: true
+  locale_gen:
+    name: "en_US.UTF-8"
+    state: present
+
+- name: locale -- configure locale
+  become: true
+  copy:
+    content: "LANG=en_US.UTF-8"
+    dest: /etc/locale.conf
+
+- name: locale -- timezone
+  become: true
+  timezone:
+    name: "America/Sao_Paulo"
+
+...

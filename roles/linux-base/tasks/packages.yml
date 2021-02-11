@@ -1,0 +1,19 @@
+---
+
+- name: corepkgs -- install packages
+  become: true
+  package:
+    name:
+      - fakeroot
+      - binutils
+      - xorg-server
+      - xorg-apps
+      - xorg-drivers
+      - netctl
+      - ifplugd
+      - dialog
+      - sudo
+      - tar
+      - gzip
+
+...

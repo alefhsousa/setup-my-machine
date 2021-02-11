@@ -1,0 +1,21 @@
+---
+
+- name: colemak -- configure x11 keymap
+  become: true
+  copy:
+    content: |
+      Section "InputClass"
+        Identifier "system-keyboard"
+        MatchIsKeyboard "on"
+        Option "XkbModel" "us"
+        Option "XkbVariant" "colemak"
+      EndSection
+    dest: /etc/X11/xorg.conf.d/00-keyboard.conf
+
+- name: colemak -- configure vconsole keymap
+  become: true
+  copy:
+    content: "KEYMAP=colemak"
+    dest: /etc/vconsole.conf
+
+...

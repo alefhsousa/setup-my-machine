@@ -1,0 +1,8 @@
+---
+
+- name: install packages
+  include_tasks: aur.yml
+  vars:
+    package: spotify
+
+...

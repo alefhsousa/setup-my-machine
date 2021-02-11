@@ -1,0 +1,14 @@
+---
+
+- name: install package
+  become: true
+  package:
+    name: rofi
+
+- name: configuration file
+  copy:
+    src: rofi-config
+    dest: "{{ root }}/.config/rofi/config"
+    mode: "0644"
+
+...

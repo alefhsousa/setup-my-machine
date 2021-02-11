@@ -1,0 +1,9 @@
+---
+
+- name: sudo -- enable sudo group
+  become: true
+  copy:
+    content: "%sudo ALL=(ALL) ALL"
+    dest: /etc/sudoers.d/groups
+
+...

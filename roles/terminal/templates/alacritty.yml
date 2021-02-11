@@ -1,0 +1,87 @@
+---
+
+window:
+  gtk_theme_variant: dark
+
+scrolling:
+  history: 10000
+
+shell:
+  program: {{ bash_path }}
+  args:
+    - --login
+    - -c
+    - "tmux attach || tmux"
+
+font:
+  normal:
+    family: Iosevka SS07
+    style: Medium
+
+  bold:
+    family: Iosevka SS07
+    style: Bold
+
+  bold:
+    family: Iosevka SS07
+    style: Italic
+
+  size: {{ alacritty_font_size }}
+
+window_dynamic_title: false
+
+custom_cursor_colors: true
+
+colors:
+  # Default colors
+  primary:
+    background: '0x383838'
+    foreground: '0xdcdccc'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0x383838'
+    cursor: '0xdcdccc'
+
+  # Normal colors
+  normal:
+    black:   '0x383838'
+    red:     '0xdca3a3'
+    green:   '0x5f7f5f'
+    yellow:  '0xe0cf9f'
+    blue:    '0x7cb8bb'
+    magenta: '0xdc8cc3'
+    cyan:    '0x93e0e3'
+    white:   '0xdcdccc'
+
+  # Bright colors
+  bright:
+    black:   '0x6f6f6f'
+    red:     '0xdca3a3'
+    green:   '0x5f7f5f'
+    yellow:  '0xe0cf9f'
+    blue:    '0x7cb8bb'
+    magenta: '0xdc8cc3'
+    cyan:    '0x93e0e3'
+    white:   '0xffffff'
+
+  indexed_colors:
+    - { index: 16, color: '0xdfaf8f' }
+    - { index: 17, color: '0x000000' }
+    - { index: 18, color: '0x404040' }
+    - { index: 19, color: '0x606060' }
+    - { index: 20, color: '0x808080' }
+    - { index: 21, color: '0xc0c0c0' }
+
+key_bindings:
+  - { key: T, mods: Control|Shift, chars: "\x06\x76" }
+  - { key: C, mods: Control|Shift, chars: "\x06\x76" }
+{% if (ansible_os_family == "Darwin") %}
+  - { key: F, mods: Alt, chars: "\x1bf" }
+  - { key: B, mods: Alt, chars: "\x1bb" }
+  - { key: D, mods: Alt, chars: "\x1bd" }
+  - { key: D, mods: Alt, chars: "\x1bd" }
+  - { key: Period, mods: Alt, chars: "\x1b." }
+{% endif %}
+
+...

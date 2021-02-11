@@ -1,0 +1,8 @@
+---
+
+- name: install package
+  become: true
+  package:
+    name: evince
+
+...

@@ -1,0 +1,23 @@
+---
+
+- name: sdk install scala
+  command: bash -l -c "sdk install scala 2.13.3"
+  failed_when: "_sdk_install_result.rc != 0 and 'already installed' not in _sdk_install_result.stdout"
+  changed_when: _sdk_install_result.rc != 0
+
+- name: default scala
+  command: bash -l -c "sdk default scala 2.13.3"
+  changed_when: false
+
+- name: install sbt
+  command: bash -l -c "sdk install sbt 1.3.13"
+  register: _sdk_install_result
+  failed_when: "_sdk_install_result.rc != 0 and 'already installed' not in _sdk_install_result.stdout"
+  changed_when: _sdk_install_result.rc != 0
+
+- name: default sdt
+  command: bash -l -c "sdk default sbt 1.3.13"
+  register: _sdk_install_result
+  changed_when: false
+
+...

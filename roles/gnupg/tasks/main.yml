@@ -1,0 +1,16 @@
+---
+
+- name: install packages
+  become: true
+  package:
+    name: gnupg
+
+- name: enable/start
+  systemd:
+    name: gpg-agent-ssh.socket
+    user: true
+    state: started
+    enabled: true
+  when: ansible_os_family == "Linux"
+
+...

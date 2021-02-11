@@ -1,0 +1,13 @@
+---
+
+- name: firefox
+  become: true
+  package:
+    name: firefox
+
+- name: install brave
+  include_tasks: aur.yml
+  vars:
+    package: brave-bin
+
+...

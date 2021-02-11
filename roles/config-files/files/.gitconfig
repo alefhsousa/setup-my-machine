@@ -1,0 +1,15 @@
+[user]
+  name        = alefhsousa
+  email       = alefh.sousa@gmail.com
+  signingkey  = alefhsousa
+
+[color]
+  diff        = auto
+  status      = auto
+  branch      = auto
+
+[push]
+  default = simple
+
+[commit]
+  gpgsign = true
