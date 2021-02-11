@@ -1,0 +1,27 @@
+---
+- name: python -- install -- pipenv
+  pacman:
+    name: python-pipenv
+    state: present
+
+- name: python -- install -- pyenv
+  pacman:
+    name: pyenv
+    state: present
+
+- name: python -- install -- black
+  pacman:
+    name: python-black
+    state: present
+
+- name: python -- install -- poery
+  pacman:
+    name: poetry
+    state: present
+
+- name: Install documentation
+  pacman:
+    name:
+      - python-docs
+      - python2-docs
+    state: present

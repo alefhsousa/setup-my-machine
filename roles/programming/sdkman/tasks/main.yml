@@ -1,5 +1,4 @@
 ---
-
 - stat:
     path: "{{ root }}/.sdkman/bin/sdkman-init.sh"
   register: _sdkman_stat
@@ -20,5 +19,4 @@
       #!/bin/bash
       . {{ root }}/.sdkman/bin/sdkman-init.sh
     mode: "0755"
-
-...
+  when: not _sdkman_stat.stat.exists

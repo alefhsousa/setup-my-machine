@@ -20,7 +20,6 @@
   roles:
     - linux-base
     - terminal
-    - programming/base
     - programming/sdkman
     - programming/java
     - programming/scala
