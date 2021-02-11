@@ -1,0 +1,46 @@
+---
+- hosts: localhost
+  connection: local
+
+  vars:
+    - root: "{{ dx15_root | default(ansible_env.HOME) }}"
+    - clean: "{{ dx15_clean | default(false) }}"
+    - profile: home
+    - emacs_font_height: 100
+    - alacritty_font_size: 10
+    - bash_path: /bin/bash
+
+  pre_tasks:
+    - name: create temporary directory
+      tempfile:
+        state: directory
+      register: tempdir
+      changed_when: false
+
+  roles:
+    - linux-base
+    - bash
+    - terminal
+    - programming/base
+    - programming/sdkman
+    - programming/java
+    - programming/scala
+    - programming/lisp
+    - browser
+    - fontconfig
+    - rofi
+    - x11-apps
+    - gnupg
+    - pass
+    - evince
+    - spotify
+    - config-files
+    - scmbreeze
+    - oh-my-zsh
+
+  post_tasks:
+    - name: remove temporary directory
+      file:
+        path: "{{ tempdir.path }}"
+        state: absent
+      changed_when: false
