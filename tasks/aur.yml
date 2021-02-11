@@ -1,0 +1,19 @@
+---
+
+- name: "aur: sudo config"
+  become: true
+  lineinfile:
+    path: /etc/sudoers.d/yay
+    line: "%sudo ALL=(root) NOPASSWD: /usr/bin/pacman"
+    mode: "0600"
+    owner: root
+    group: root
+    create: true
+    validate: /usr/sbin/visudo -csf %s
+
+- name: "aur: install package {{ package }}"
+  command: "yay -S --needed --noconfirm --cleanafter {{ package }}"
+  register: yay_output
+  changed_when: "'is up to date -- skipping' not in yay_output.stdout"
+
+...
