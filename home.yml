@@ -19,7 +19,6 @@
 
   roles:
     - linux-base
-    - bash
     - terminal
     - programming/base
     - programming/sdkman
