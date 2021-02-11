@@ -1,5 +1,4 @@
 ---
-
 - name: corepkgs -- install packages
   become: true
   package:
@@ -15,5 +14,4 @@
       - sudo
       - tar
       - gzip
-
-...
+      - base-devel
