@@ -1,5 +1,4 @@
 ---
-
 - name: swap -- install packages
   become: true
   package:
@@ -34,7 +33,7 @@
   become: true
   copy:
     src: zram.conf
-    dest: /etc/systemd/swap.conf.d/zram.conf
+    dest: /etc/systemd/zram.conf
 
 - name: swap -- enable/start
   become: true

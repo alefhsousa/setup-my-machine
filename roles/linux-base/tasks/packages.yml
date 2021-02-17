@@ -3,6 +3,32 @@
   become: true
   package:
     name:
+      - base-devel
+      - man-db
+      - man-pages
+      - pacman-contrib
+      - fwupd
+      - dmidecode
+      - tmux
+      - git
+      - rsync
+      - coreutils
+      - moreutils
+      - dateutils
+      - bc
+      - ranger
+      - arch-wiki-lite
+      - arch-wiki-docs
+      - python-keyring
+      - python-secretstorage
+      - tig
+      - pv
+      - minicom
+      - jq
+      - screen
+      - termdown
+      - fzf
+      - cpulimit
       - fakeroot
       - binutils
       - xorg-server
@@ -16,4 +42,3 @@
       - gzip
       - clang
       - unzip
-      - base-devel

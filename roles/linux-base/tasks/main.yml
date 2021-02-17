@@ -3,7 +3,9 @@
 - import_tasks: docker.yml
 - import_tasks: locale.yml
 - import_tasks: ntp.yml
+- import_tasks: user.yml
 - import_tasks: sudo.yml
 - import_tasks: swap.yml
 - import_tasks: systemctl.yml
+- import_tasks: archive.yml
 - import_tasks: yay.yml
