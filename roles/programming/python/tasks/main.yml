@@ -14,10 +14,10 @@
     name: python-black
     state: present
 
-- name: python -- install -- poery
-  pacman:
-    name: poetry
-    state: present
+- name: python -- install -- poetry
+  include_tasks: aur.yml
+  vars:
+    package: poetry
 
 - name: Install documentation
   pacman:

@@ -1,14 +1,14 @@
 ---
-
 - name: install package
   become: true
   package:
     name: rofi
+
+- name: create configuration directory
+  file: path="{{ root }}/.config/rofi" state=directory mode=0755
 
 - name: configuration file
   copy:
     src: rofi-config
     dest: "{{ root }}/.config/rofi/config"
     mode: "0644"
-
-...

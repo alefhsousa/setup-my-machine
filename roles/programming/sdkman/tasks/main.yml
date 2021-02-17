@@ -13,8 +13,9 @@
   when: not _sdkman_stat.stat.exists
 
 - name: sdkman init
+  become: true
   copy:
-    dest: "{{ root }}/.bash.d/profile.d/sdkman-init"
+    dest: "/etc/profile.d/sdkman-init"
     content: |
       #!/bin/bash
       . {{ root }}/.sdkman/bin/sdkman-init.sh
