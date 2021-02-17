@@ -1,5 +1,4 @@
 ---
-
 - name: fontconfig packages
   become: true
   package:
@@ -13,8 +12,33 @@
   vars:
     package: "{{ item }}"
   loop:
-    - freetype2-cleartype
+    - freetype2
     - ttf-iosevka-ss07
+    - adobe-source-code-pro-fonts
+    - cantarell-fonts
+    - gsfonts
+    - noto-fonts
+    - terminus-font
+    - tex-gyre-fonts
+    - ttf-caladea
+    - ttf-carlito
+    - ttf-dejavu
+    - ttf-droid
+    - ttf-fira-mono
+    - ttf-ibm-plex
+    - ttf-inconsolata
+    - ttf-liberation
+    - ttf-opensans
+    - ttf-ubuntu-font-family
+    # - ttf-bitstream-charter
+    - ttf-cooper-hewitt
+    - ttf-courier-prime
+    - ttf-heuristica
+    - ttf-merriweather
+    - ttf-merriweather-sans
+    - ttf-oswald
+    - ttf-quintessential
+    - ttf-signika
 
 - name: fontconfig features
   become: true
@@ -27,3 +51,33 @@
     - 10-hinting-slight.conf
     - 11-lcdfilter-default.conf
     - 70-no-bitmaps.conf
+
+- name: Install cairo
+  become: true
+  pacman:
+    name: cairo
+    state: present
+
+- name: Enable LCD filter
+  file:
+    src: /etc/fonts/conf.avail/11-lcdfilter-default.conf
+    dest: /etc/fonts/conf.d/11-lcdfilter-default.conf
+    state: link
+
+- name: Enable sub-pixel rendering
+  file:
+    src: /etc/fonts/conf.avail/10-sub-pixel-rgb.conf
+    dest: /etc/fonts/conf.d/10-sub-pixel-rgb.conf
+    state: link
+
+- name: Enable hinting
+  file:
+    src: /etc/fonts/conf.avail/10-hinting-slight.conf
+    dest: /etc/fonts/conf.d/10-hinting-slight.conf
+    state: link
+
+- name: Push font substitutions
+  become: true
+  copy:
+    src: local.conf
+    dest: /etc/fonts/local.conf
