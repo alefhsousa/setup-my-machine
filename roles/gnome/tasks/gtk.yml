@@ -1,0 +1,8 @@
+---
+- name: Creating GTK+ 3 system wide settings
+  become: true
+  file: path=/etc/gtk-3.0 state=directory mode=0755
+
+- name: Configuring GTK+ 3 theme
+  become: true
+  template: src=gtk-3.0/settings.ini.j2 dest=/etc/gtk-3.0/settings.ini mode=0644

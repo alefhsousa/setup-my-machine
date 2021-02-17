@@ -1,0 +1,6 @@
+---
+- name: Install unclutter
+  become: true
+  pacman: name=unclutter state=present
+  tags:
+    - unclutter

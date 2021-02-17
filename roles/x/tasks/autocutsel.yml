@@ -1,0 +1,8 @@
+---
+- name: Install autocutsel
+  become: true
+  pacman:
+    name: autocutsel
+    state: present
+  tags:
+    - autocutsel

@@ -1,0 +1,8 @@
+---
+- name: Creating DConf database directory
+  become: true
+  file: path=/etc/dconf/db state=directory mode=0755 recurse=yes
+
+- name: Creating DConf profile directory
+  become: true
+  file: path=/etc/dconf/profile state=directory mode=0755 recurse=yes
