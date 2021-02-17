@@ -1,10 +1,11 @@
 ---
-- name: Installing zsh package
-  homebrew:
-    name: "{{ item }}"
+- name: Install ZSH
+  become: true
+  pacman:
+    name:
+      - zsh
+      - zsh-completions
     state: present
-  with_items:
-    - zsh
   when: install_oh_my_zsh
 
 - name: Installing oh-my-zsh
