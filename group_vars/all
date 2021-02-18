@@ -56,4 +56,17 @@ gnome:
     gnome_shell:
         disable_top_left_hot_corner: False
         extensions_support: True
+
+firejail:
+    blacklist:
+        - ~/.calendars
+        - ~/.config/vdirsyncer
+        - ~/.contacts
+        - ~/.keys
+        - ~/.mbsyncrc
+        - ~/.offlineimap
+        - ~/.offlineimaprc
+        - ~/.password-store
+        - ~/.vdirsyncer
+        - ~/library
 ...

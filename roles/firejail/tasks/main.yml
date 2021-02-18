@@ -1,0 +1,38 @@
+---
+- name: Install firejail
+  become: true
+  pacman:
+    name: firejail
+    state: present
+
+- name: Install firewarden
+  include_tasks: aur.yml
+  vars:
+    package: firewarden
+
+- name: Install firejail profile update script
+  become: true
+  copy:
+    src: profile-activate.sh
+    dest: /usr/local/bin/profile-activate
+    mode: 0755
+
+- name: Create firejail profile directory
+  become: true
+  file:
+    path: /usr/local/etc/firejail
+    state: directory
+
+- name: Verify firejail globals file exists
+  become: true
+  file:
+    path: /etc/firejail/globals.local
+    state: touch
+
+- name: Add blacklist to globals
+  become: true
+  lineinfile:
+    dest: /etc/firejail/globals.local
+    state: present
+    line: "blacklist {{ item }}"
+  with_items: "{{ firejail.blacklist }}"
