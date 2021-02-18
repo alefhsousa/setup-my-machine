@@ -15,9 +15,10 @@
 - name: sdkman init
   become: true
   copy:
-    dest: "/etc/profile.d/sdkman-init"
+    dest: "/etc/profile.d/sdkman-init.sh"
     content: |
       #!/bin/bash
       . {{ root }}/.sdkman/bin/sdkman-init.sh
     mode: "0755"
+  notify: reload systemd config
   when: not _sdkman_stat.stat.exists
