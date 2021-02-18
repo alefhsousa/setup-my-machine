@@ -1,0 +1,21 @@
+---
+- name: get ckecksum of default pacman conf
+  stat:
+    path: /etc/pacman.conf
+  register: pacmanconfdefault
+
+- name: Set current SHA1 of default pacman conf
+  set_fact:
+    mf1sha1: "{{ pacmanconfdefault.stat.checksum }}"
+
+- name: Copy pacman configuration file
+  become: true
+  copy:
+    src: pacman.conf
+    dest: /etc/pacman.conf
+  when: "'0aa8de675b43703b337ce479cd92732988874b15' in mf1sha1"
+
+- name: Refresh pacman mirrors
+  become: true
+  pacman:
+    update_cache: yes
