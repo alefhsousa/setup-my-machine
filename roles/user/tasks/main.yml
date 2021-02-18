@@ -1,0 +1,29 @@
+---
+- name: Install inetutils for hostname
+  become: true
+  pacman:
+    name: inetutils
+    state: present
+
+- name: Set the hostname
+  become: true
+  hostname:
+    name: "{{ hostname }}"
+  when: hostname is defined
+
+- name: Set kernel parameters
+  become: true
+  lineinfile:
+    dest: /etc/default/grub
+    regexp: "^GRUB_CMDLINE_LINUX_DEFAULT"
+    state: present
+    line: 'GRUB_CMDLINE_LINUX_DEFAULT="{{ kernel_parameters }}"'
+  when: kernel_parameters is defined and bootloader == 'grub'
+  notify:
+    - rebuild grub
+  tags:
+    - kernelparams
+
+- include: shell.yml
+- include: user.yml
+- include: sudo.yml

@@ -1,0 +1,20 @@
+---
+- name: Install Bash
+  become: true
+  pacman:
+    name:
+      - bash
+      - bash-completion
+    state: present
+  tags:
+    - shell
+
+- name: Install ZSH
+  become: true
+  pacman:
+    name:
+      - zsh
+      - zsh-completions
+    state: present
+  tags:
+    - shell
