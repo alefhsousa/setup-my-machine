@@ -1,11 +1,10 @@
 ---
-- import_tasks: packages.yml
-- import_tasks: docker.yml
-- import_tasks: locale.yml
-- import_tasks: ntp.yml
-- import_tasks: user.yml
-- import_tasks: sudo.yml
-- import_tasks: swap.yml
-- import_tasks: systemctl.yml
-- import_tasks: archive.yml
-- import_tasks: yay.yml
+- include: packages.yml
+- include: journal.yml
+- include: docker.yml
+- include: locale.yml
+- include: ntp.yml
+- include: swap.yml
+- include: systemctl.yml
+- include: archive.yml
+- include: yay.yml
