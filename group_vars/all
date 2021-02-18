@@ -69,4 +69,9 @@ firejail:
         - ~/.password-store
         - ~/.vdirsyncer
         - ~/library
+
+ssh:
+    port: 22
+    enable_sshd: False
+
 ...
