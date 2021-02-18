@@ -6,6 +6,7 @@
     state: present
 
 - name: Enable GDM
+  become: true
   service: name=gdm.service enabled=yes
 
 - name: Creating DConf configuration profile

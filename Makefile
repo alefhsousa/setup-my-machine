@@ -1,5 +1,5 @@
 setup:
-	pacman -Syy git python-passlib ansible
+	pacman -Syy makegit python-passlib ansible
 
 home:
 	ansible-playbook -i localhost home.yml

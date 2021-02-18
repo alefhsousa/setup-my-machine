@@ -74,4 +74,13 @@ ssh:
     port: 22
     enable_sshd: False
 
+browser_choices:
+    - firefox -P default
+    - firefox -P work
+    - firewarden chromium
+    - firewarden -c qutebrowser
+    - tor-browser-en
+    - play
+    - qcode
+    - "| xclip -selection c"
 ...

@@ -3,10 +3,7 @@
   connection: local
 
   vars:
-    - root: "{{ dx15_root | default(ansible_env.HOME) }}"
-    - clean: "{{ dx15_clean | default(false) }}"
-    - profile: home
-    - emacs_font_height: 100
+    - root: /home/lilo/
     - alacritty_font_size: 10
     - bash_path: /bin/bash
 
@@ -31,10 +28,13 @@
     - gnupg
     - pass
     - evince
-    - spotify
+    # - spotify
     - config-files
     - scmbreeze
     - oh-my-zsh
+    - x
+    - gnome
+    - ssh
 
   post_tasks:
     - name: remove temporary directory
