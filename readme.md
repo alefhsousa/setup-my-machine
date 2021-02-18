@@ -6,19 +6,16 @@ Automatically prepare a ArchLinux for development and desktop tasks using Ansibl
 
 ### Prepare machine to run the Ansible playbooks
 
-    ```
+
     $ pacman -Syy git python-passlib ansible
-    ```
 
 ### Setup user
 
-    ```
     $ ansible-playbook -i localhost setup.yml
-    ```
 ### Configure machine
-    ```
+    
     $ ansible-playbook home.yml -i localhost --user=YourDefinedUser --extra-vars "ansible_sudo_pass=YourUserPassword"
-    ```
+    
 <!-- ### Programming Languages 
 
 - Java (JDK)
