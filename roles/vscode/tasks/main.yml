@@ -1,0 +1,13 @@
+---
+- name: Install vscode opensource
+  become: true
+  pacman:
+    name:
+      - code
+    state: present
+
+- name: install vscode configuration
+  become: true
+  template:
+    src: settings.j2
+    dest: ~/.config/Code - OSS/User/settings.json

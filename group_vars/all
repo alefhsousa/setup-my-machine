@@ -83,4 +83,16 @@ browser_choices:
     - play
     - qcode
     - "| xclip -selection c"
+
+vscode:
+    theme: dark
+    editor:
+      font_size: 14
+      family: "JetBrains Mono"
+      line_heigth: 26
+      tab_size: 2
+
+    terminal:
+      shell: /usr/bin/zsh
+      font_size: 14
 ...
