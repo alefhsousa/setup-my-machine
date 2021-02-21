@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  connection: local
+
+  vars:
+    - root: /home/lilo/
+    - alacritty_font_size: 10
+    - bash_path: /bin/bash
+
+  pre_tasks:
+    - name: create temporary directory
+      tempfile:
+        state: directory
+      register: tempdir
+      changed_when: false
+
+  roles:
+    - vscode
+
+  post_tasks:
+    - name: remove temporary directory
+      file:
+        path: "{{ tempdir.path }}"
+        state: absent
+      changed_when: false
