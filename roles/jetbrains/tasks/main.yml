@@ -1,0 +1,4 @@
+# Install package foo
+- aur:
+    name: jetbrains-toolbox
+    user: "{{ user.name }}"
