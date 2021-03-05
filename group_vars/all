@@ -1,15 +1,15 @@
 ---
 
 user:
-    name: lilo
+    name: stitch
     uid: 1005
-    group: lilo
+    group: stich
     shell: /usr/bin/zsh
     log:
         dir: log
         rotate: 8
 
-hostname: stitch
+hostname: lilo
 
 passwordless_sudo:
     - /usr/bin/openvpn*
@@ -89,7 +89,7 @@ vscode:
     editor:
       font_size: 14
       family: "JetBrains Mono"
-      line_heigth: 26
+      line_height: 26
       tab_size: 2
 
     terminal:
