@@ -10,4 +10,4 @@
   become: true
   template:
     src: settings.j2
-    dest: ~/.config/Code - OSS/User/settings.json
+    dest: "/home/{{ user.name }}/.config/Code - OSS/User/settings.json"
